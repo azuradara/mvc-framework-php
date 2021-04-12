@@ -9,6 +9,8 @@ $app->router->get('/', 'home');
 
 $app->router->get('/contact', 'contact');
 
+$app->router->get('/home', 'home');
+
 $app->router->post('/contact', function() {
 
 });
