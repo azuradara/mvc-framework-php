@@ -32,7 +32,7 @@ class Request {
 
 	// HELPERS
 
-	public function getPostBody() {
+	public function getReqBody() {
 		$postBody = [];
 
 		// filter_input ( int $type , string $var_name , int $filter = FILTER_DEFAULT , array|int $options = 0 ) : mixed
@@ -40,16 +40,16 @@ class Request {
 		
 		if ($this->method() === 'get') {
 			foreach ($_GET as $k => $val) {
-				$postBody[$k] = filter_input(INPUT_GET, $k, FILTER_SANITIZE_SPECIAL_CHARS);
+				$reqBody[$k] = filter_input(INPUT_GET, $k, FILTER_SANITIZE_SPECIAL_CHARS);
 			}
 		}
 
 		if ($this->method() === 'post') {
 			foreach ($_POST as $k => $val) {
-				$postBody[$k] = filter_input(INPUT_GET, $k, FILTER_SANITIZE_SPECIAL_CHARS);
+				$reqBody[$k] = filter_input(INPUT_POST, $k, FILTER_SANITIZE_SPECIAL_CHARS);
 			}
 		}
 
-		return $postBody;
+		return $reqBody;
 	}
 }

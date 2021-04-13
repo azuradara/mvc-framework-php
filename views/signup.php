@@ -93,7 +93,7 @@ input:focus {
 <script>
 // document.getElementById('name').value = 'John Doe'
 // document.getElementById('email').value = 'john.doe@mail.com'
-document.getElementById('email').focus()
+document.querySelector('#userUsername').focus()
 const allInputs = document.querySelectorAll('input');
 for (const input of allInputs) {
 	input.addEventListener('input', () => {
