@@ -1,45 +1,67 @@
-<?php
-
-?>
 <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
 	<section>
 		<form class="flex flex-col" action="" method="post">
-			<h1 class="text-4xl font-bold mb-7 text-center">Contact</h1>
+			<h1 class="text-4xl font-bold mb-7 text-center">Sign Up</h1>
 
+			<!-- input component -->
 			<div class="relative h-10 input-component mb-5 empty">
-				<input id="name" type="text" name="name"
+				<input id="userUsername" type="text" name="userUsername"
 					class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" />
-				<label for="name" class="absolute left-2 transition-all bg-white px-1">
+				<label for="userUsername" class="absolute left-2 transition-all bg-white px-1">
 					Name
 				</label>
 			</div>
-			<!-- This is the input component -->
+			<!-- input component -->
+
+			<!-- input component -->
 			<div class="relative h-10 input-component mb-5 empty">
-				<input id="email" type="text" name="email"
+				<input id="userEmail" type="text" name="userEmail"
 					class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" />
-				<label for="email" class="absolute left-2 transition-all bg-white px-1">
-					E-mail
+				<label for="userEmail" class="absolute left-2 transition-all bg-white px-1">
+					Email
 				</label>
 			</div>
-			<!-- This is the input component -->
-			<div class="relative h-10 input-component empty">
-				<input id="address" type="text" name="address"
+			<!-- input component -->
+
+			<!-- input component -->
+			<div class="relative h-10 input-component mb-5 empty">
+				<input id="userPwd" type="password" name="userPwd"
 					class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" />
-				<label for="address" class="absolute left-2 transition-all bg-white px-1">
-					Address
+				<label for="userPwd" class="absolute left-2 transition-all bg-white px-1">
+					Password
 				</label>
 			</div>
+			<!-- input component -->
+
+			<!-- input component -->
+			<div class="relative h-10 input-component mb-5 empty">
+				<input id="userPwdRpt" type="password" name="userPwdRpt"
+					class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm" />
+				<label for="userPwdRpt" class="absolute left-2 transition-all bg-white px-1">
+					Confirm Password
+				</label>
+			</div>
+			<!-- input component -->
+
 
 			<button
 				class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 my-3"
 				type="submit" name="submit">
-				Send
+				Sign Up
 			</button>
 
 		</form>
 	</section>
 </main>
 
+<div class="max-w-lg mx-auto text-center mt-12 mb-6">
+	<p class="text-gray-800">
+		Already have an account?
+		<a class="font-bold hover:underline" href="#">Log In</a>.
+	</p>
+</div>
+
+<!-- assets -->
 
 <style>
 label {
