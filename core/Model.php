@@ -59,6 +59,16 @@ abstract class Model
         return empty($this->err);
     }
 
+	public function hasErr($attr)
+	{
+		return $this->err[$attr] ?? false;
+	}
+
+	public function firstErr($attr)
+	{
+		return $this->err[$attr][0] ?? '';
+	}
+
     abstract public function ruleset(): array;
 
     public function appendErr(string $attr, string $flag, $par = [])
