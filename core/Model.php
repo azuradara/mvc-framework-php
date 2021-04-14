@@ -2,79 +2,84 @@
 
 namespace app\core;
 
-abstract class Model {
+abstract class Model
+{
 
-	public const RL_REQUIRED = 'required';
-	public const RL_EMAIL = 'email';
-	public const RL_MIN = 'min';
-	public const RL_MAX = 'max';
-	public const RL_MATCH = 'match';
+    public const RL_REQUIRED = 'required';
+    public const RL_EMAIL = 'email';
+    public const RL_MIN = 'min';
+    public const RL_MAX = 'max';
+    public const RL_MATCH = 'match';
 
-	public array $err = [];
-	
-	abstract public function ruleset(): array;
+    public array $err = [];
 
-	public function getData($data) {
-		foreach($data as $k => $val) {
-			if(property_exists($this, $k)) {
-				$this->{$k} = $val;
-			}
-		}
-	}
+    public function getData($data)
+    {
+        foreach ($data as $k => $val) {
+            if (property_exists($this, $k)) {
+                $this->{$k} = $val;
+            }
+        }
+    }
 
-	public function resolveErr() {
-		return [
-			self::RL_REQUIRED => 'This field is required.',
-			self::RL_EMAIL => 'This is not avalid email address.',
-			self::RL_MIN => 'This field cannot be shorter than {val} characters.',
-			self::RL_MAX => 'This field cannot be longer than {val} characters',
-			self::RL_MATCH => 'This field must match {matches}'
-		];
-	}
+    public function validate()
+    {
+        foreach ($this->ruleset() as $attr => $ruleset) {
+            $val = $this->{$attr};
 
-	public function appendErr (string $attr, string $flag, $par = []) {
-		$msg = $this->resolveErr()[$flag] ?? '';
+            foreach ($ruleset as $rule) {
+                $flag = $rule;
 
-		foreach ($par as $k => $val) {
-			$msg = str_replace("{{$k}}", $val, $msg);
-		}
+                if (!is_string($flag)) {
+                    $flag = $rule[0];
+                }
 
-		$this->err[$attr][] = $msg;
-	}
+                if ($flag === self::RL_REQUIRED && !$val) {
+                    $this->appendErr($attr, self::RL_REQUIRED);
+                }
 
-	public function validate() {
-		foreach ($this->ruleset() as $attr => $ruleset) {
-			$val = $this->{$attr};
+                if ($flag === self::RL_EMAIL && !filter_var($val, FILTER_VALIDATE_EMAIL)) {
+                    $this->appendErr($attr, self::RL_EMAIL);
+                }
 
-			foreach ($ruleset as $rule) {
-				$flag = $rule;
+                if ($flag === self::RL_MIN && strlen($val) < $rule['val']) {
+                    $this->appendErr($attr, self::RL_MIN, $rule);
+                }
 
-				if (!is_string($flag)) {
-					$flag = $rule[0];
-				}
+                if ($flag === self::RL_MAX && strlen($val) > $rule['val']) {
+                    $this->appendErr($attr, self::RL_MAX, $rule);
+                }
 
-				if ($flag === self::RL_REQUIRED && !$val) {
-					$this->appendErr($attr, self::RL_REQUIRED);
-				}
+                if ($flag === self::RL_MATCH && $val !== $this->{$rule['matches']}) {
+                    $this->appendErr($attr, self::RL_MATCH, $rule);
+                }
+            }
+        }
 
-				if ($flag === self::RL_EMAIL && !filter_var($val, FILTER_VALIDATE_EMAIL)) {
-					$this->appendErr($attr, self::RL_EMAIL);
-				}
+        return empty($this->err);
+    }
 
-				if ($flag === self::RL_MIN && strlen($val) < $rule['val']) {
-					$this->appendErr($attr, self::RL_MIN, $rule);
-				}
+    abstract public function ruleset(): array;
 
-				if ($flag === self::RL_MAX && strlen($val) > $rule['val']) {
-					$this->appendErr($attr, self::RL_MAX, $rule);
-				}
+    public function appendErr(string $attr, string $flag, $par = [])
+    {
+        $msg = $this->resolveErr()[$flag] ?? '';
 
-				if ($flag === self::RL_MATCH && $val !== $this->{$rule['matches']}) {
-					$this->appendErr($attr, self::RL_MATCH, $rule);
-				}
-			}
-		}
+        foreach ($par as $k => $val) {
+            $msg = str_replace("{{$k}}", $val, $msg);
+        }
 
-		return empty($this->err);
-	}
+        $this->err[$attr][] = $msg;
+    }
+
+    public function resolveErr()
+    {
+        return [
+            self::RL_REQUIRED => 'This field is required.',
+            self::RL_EMAIL => 'This is not avalid email address.',
+            self::RL_MIN => 'This field cannot be shorter than {val} characters.',
+            self::RL_MAX => 'This field cannot be longer than {val} characters',
+            self::RL_MATCH => 'This field must match {matches}'
+        ];
+    }
 }

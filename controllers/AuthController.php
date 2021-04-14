@@ -2,38 +2,41 @@
 
 namespace app\controllers;
 
-use app\core\Request;
 use app\core\Controller;
+use app\core\Request;
 use app\models\SignupModel;
 
-class Authcontroller extends Controller {
+class Authcontroller extends Controller
+{
 
-	// $this->socketView('blank');
-	// this method to socket content in a different view
+    // $this->socketView('blank');
+    // this method to socket content in a different view
 
-	public function login() {
-		return $this->render('login');
-	}
+    public function login()
+    {
+        return $this->render('login');
+    }
 
-	public function signup(Request $req) {
-		$signupModel = new SignupModel();
-		$err = [];
-		
-		if ($req->isPOST()) {
-			$signupModel->getData($req->getReqBody());
+    public function signup(Request $req)
+    {
+        $signupModel = new SignupModel();
+        $err = [];
 
-			// var_dump($signupModel);
+        if ($req->isPOST()) {
+            $signupModel->getData($req->getReqBody());
 
-			if ($signupModel->validate() && $signupModel->register()) {
-				return 'sgood';
-			}
+            // var_dump($signupModel);
 
-			var_dump($signupModel->err);
+            if ($signupModel->validate() && $signupModel->register()) {
+                return 'sgood';
+            }
 
-			return $this->render('signup', ['model' => $signupModel]);
-		}
+            var_dump($signupModel->err);
+
+            return $this->render('signup', ['model' => $signupModel]);
+        }
 
 
-		return $this->render('signup', ['model' => $signupModel]);
-	}
+        return $this->render('signup', ['model' => $signupModel]);
+    }
 }
