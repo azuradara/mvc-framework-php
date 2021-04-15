@@ -7,10 +7,10 @@ use app\core\Model;
 class SignupModel extends Model
 {
 
-    public string $userUsername;
-    public string $userEmail;
-    public string $userPwd;
-    public string $userPwdRpt;
+    public string $userUsername = '';
+    public string $userEmail = '';
+    public string $userPwd = '';
+    public string $userPwdRpt = '';
 
     public function register()
     {

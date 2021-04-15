@@ -66,7 +66,7 @@ abstract class Model
 
 	public function firstErr($attr)
 	{
-		return $this->err[$attr][0] ?? '';
+		return $this->err[$attr][0] ?? false;
 	}
 
     abstract public function ruleset(): array;
