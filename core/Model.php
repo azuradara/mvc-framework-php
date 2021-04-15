@@ -86,7 +86,7 @@ abstract class Model
     {
         return [
             self::RL_REQUIRED => 'This field is required.',
-            self::RL_EMAIL => 'This is not avalid email address.',
+            self::RL_EMAIL => 'This is not a valid email address.',
             self::RL_MIN => 'This field cannot be shorter than {val} characters.',
             self::RL_MAX => 'This field cannot be longer than {val} characters',
             self::RL_MATCH => 'This field must match {matches}'

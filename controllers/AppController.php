@@ -28,7 +28,7 @@ class AppController extends Controller
 
     public function _wrangle_contact(Request $req)
     {
-        $req->getPostBody();
+        $req->getReqBody();
         return 'Wrangling tards';
     }
 }
