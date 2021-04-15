@@ -1,12 +1,12 @@
 <?php
 
 class m01_init {
-	public function up()
+	public function export()
 	{
 		echo 'Exporting..';
 	}
 
-	public function down()
+	public function import()
 	{
 		echo 'Importing';
 	}
