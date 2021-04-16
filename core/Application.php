@@ -24,7 +24,7 @@ class Application
         self::$app = $this;
 
         $this->db = new Database($config['db']);
-        $this->userClass = $config['userClass'];
+        $this->userClass = $config['userClass'] ?? '';
         $this->session = new Session();
         $this->req = new Request();
         $this->res = new Response();

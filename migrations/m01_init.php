@@ -1,6 +1,6 @@
 <?php
 
-namespace app\migrations;
+//namespace app\migrations;
 
 use app\core\Application;
 

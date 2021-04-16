@@ -24,6 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a600e450-645f-45b1-92c0-9de26ed3d0ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/m01_init.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/m01_init.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,17 +94,6 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="PHPUnit.mvc-framework-php">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="mvc-framework-php" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner directory="$PROJECT_DIR$/public" />
       <method v="2" />
@@ -113,11 +106,6 @@
       <TestRunner directory="$PROJECT_DIR$/views" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="PHPUnit.mvc-framework-php" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -137,6 +125,15 @@
       <workItem from="1618547242037" duration="890000" />
       <workItem from="1618548286420" duration="531000" />
       <workItem from="1618548880987" duration="9884000" />
+      <workItem from="1618564553427" duration="96000" />
+      <workItem from="1618564657105" duration="21000" />
+      <workItem from="1618564685484" duration="110000" />
+      <workItem from="1618564895629" duration="514000" />
+      <workItem from="1618565430970" duration="330000" />
+      <workItem from="1618565782280" duration="929000" />
+      <workItem from="1618566786040" duration="403000" />
+      <workItem from="1618573645261" duration="578000" />
+      <workItem from="1618579056115" duration="425000" />
     </task>
     <servers />
   </component>

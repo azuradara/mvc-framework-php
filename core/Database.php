@@ -32,10 +32,12 @@ class Database
                 continue;
             }
 
-            require_once Application::$ROOT_DIR . './migrations/' . $mig;
+            require_once Application::$ROOT_DIR . '/migrations/' . $mig;
 
             // gives filename without extension
             $stripped_mig = pathinfo($mig, PATHINFO_FILENAME);
+            var_dump(Application::$ROOT_DIR . '/migrations/' . $mig);
+            var_dump($stripped_mig);
 
             $migObj = new $stripped_mig();
 
