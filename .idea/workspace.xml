@@ -24,10 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a600e450-645f-45b1-92c0-9de26ed3d0ab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/m01_init.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/m01_init.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/profile.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,10 +87,21 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="PHPUnit.mvc-framework-php">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="mvc-framework-php" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner directory="$PROJECT_DIR$/public" />
       <method v="2" />
@@ -133,7 +141,7 @@
       <workItem from="1618565782280" duration="929000" />
       <workItem from="1618566786040" duration="403000" />
       <workItem from="1618573645261" duration="578000" />
-      <workItem from="1618579056115" duration="425000" />
+      <workItem from="1618579056115" duration="6355000" />
     </task>
     <servers />
   </component>
@@ -151,6 +159,17 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/controllers/AppController.php</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
