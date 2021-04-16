@@ -2,32 +2,54 @@
 
 namespace app\core;
 
-abstract class BaseDBModel extends Model {
-	abstract public function get_table(): string;
+abstract class BaseDBModel extends Model
+{
+    public function push()
+    {
+        // TODO: introspect schema to get attributes instead of getting them manually
+        $table = $this->get_table();
+        $rows = $this->get_rows();
 
-	abstract public function get_rows(): array;
+        $params = array_map(fn($row) => ":$row", $rows);
 
-	public function push() {
-		// TODO: introspect schema to get attributes instead of getting them manually
-		$table = $this->get_table();
-		$rows = $this->get_rows();
+        $stmt = self::prepare("INSERT INTO $table (" . implode(',', $rows) . ") VALUES(" . implode(',', $params) . ")");
 
-		$params = array_map(fn($row) => ":$row", $rows);
+        // iterate over rows and bind
 
-		$stmt = self::prepare("INSERT INTO $table (".implode(',', $rows).") VALUES(".implode(',', $params).")");
+        foreach ($rows as $row) {
+            $stmt->bindValue(":$row", $this->{$row});
+        }
 
-		// iterate over rows and bind
+        $stmt->execute();
 
-		foreach($rows as $row) {
-			$stmt->bindValue(":$row", $this->{$row});
-		}
-		
-		$stmt->execute();
-		
-		return true;
-	}
+        return true;
+    }
 
-	public static function prepare($sql) {
-		return Application::$app->db->driver->prepare($sql);
-	}
+    public function fetchOne($loc)
+    {
+        $table = static::get_table();
+//        call gettable on the class instead of this abstract
+        $attr = array_keys($loc);
+        $sql = implode("AND ", array_map(fn($a) => "$a = :$a", $attr));
+
+        $stmt = self::prepare("SELECT * FROM $table WHERE $sql");
+
+        foreach($loc as $k => $v) {
+            $stmt->bindValue(":$k", "$v");
+        }
+
+        $stmt->execute();
+
+        return $stmt->fetchObject(static::class);
+        // return object as instance of invoker class (ye it took a few braincells)
+    }
+
+    abstract public function get_table(): string;
+
+    abstract public function get_rows(): array;
+
+    public static function prepare($sql)
+    {
+        return Application::$app->db->driver->prepare($sql);
+    }
 }

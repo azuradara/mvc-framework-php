@@ -18,7 +18,8 @@ class User extends BaseDBModel
 
     public int $userState = self::STATE_OFF;
 
-    public function push() {
+    public function push()
+    {
         $this->userState = self::STATE_OFF;
         $this->userPwd = password_hash($this->userPwd, PASSWORD_DEFAULT);
         return parent::push();

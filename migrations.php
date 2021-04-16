@@ -7,11 +7,11 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $config = [
-	'db' => [
-		'dsn' => $_ENV['DB_DSN'],
-		'user' => $_ENV['DB_USER'],
-		'pwd' => $_ENV['DB_PWD'],
-	]
+    'db' => [
+        'dsn' => $_ENV['DB_DSN'],
+        'user' => $_ENV['DB_USER'],
+        'pwd' => $_ENV['DB_PWD'],
+    ]
 ];
 
 $app = new Application(__DIR__, $config);

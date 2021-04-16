@@ -13,11 +13,6 @@ abstract class Model
 
     public array $err = [];
 
-    public function inputLabels(): array
-    {
-        return [];
-    }
-
     public function getData($data)
     {
         foreach ($data as $k => $val) {
@@ -25,11 +20,6 @@ abstract class Model
                 $this->{$k} = $val;
             }
         }
-    }
-
-    public function get_label($attr)
-    {
-        return $this->inputLabels()[$attr] ?? $attr;
     }
 
     public function validate()
@@ -45,24 +35,24 @@ abstract class Model
                 }
 
                 if ($flag === self::RL_REQUIRED && !$val) {
-                    $this->appendErr($attr, self::RL_REQUIRED);
+                    $this->resolveRuleErr($attr, self::RL_REQUIRED);
                 }
 
                 if ($flag === self::RL_EMAIL && !filter_var($val, FILTER_VALIDATE_EMAIL)) {
-                    $this->appendErr($attr, self::RL_EMAIL);
+                    $this->resolveRuleErr($attr, self::RL_EMAIL);
                 }
 
                 if ($flag === self::RL_MIN && strlen($val) < $rule['val']) {
-                    $this->appendErr($attr, self::RL_MIN, $rule);
+                    $this->resolveRuleErr($attr, self::RL_MIN, $rule);
                 }
 
                 if ($flag === self::RL_MAX && strlen($val) > $rule['val']) {
-                    $this->appendErr($attr, self::RL_MAX, $rule);
+                    $this->resolveRuleErr($attr, self::RL_MAX, $rule);
                 }
 
                 if ($flag === self::RL_MATCH && $val !== $this->{$rule['matches']}) {
                     $rule['matches'] = $this->get_label($rule['matches']);
-                    $this->appendErr($attr, self::RL_MATCH, $rule);
+                    $this->resolveRuleErr($attr, self::RL_MATCH, $rule);
                 }
 
                 if ($flag === self::RL_UNIQ) {
@@ -78,7 +68,7 @@ abstract class Model
                     $not_unique = $stmt->fetchObject();
 
                     if ($not_unique) {
-                        $this->appendErr($attr, self::RL_UNIQ, ['input' => $this->get_label($attr)]);
+                        $this->resolveRuleErr($attr, self::RL_UNIQ, ['input' => $this->get_label($attr)]);
                     }
                 }
             }
@@ -87,19 +77,9 @@ abstract class Model
         return empty($this->err);
     }
 
-	public function hasErr($attr)
-	{
-		return $this->err[$attr] ?? false;
-	}
-
-	public function firstErr($attr)
-	{
-		return $this->err[$attr][0] ?? false;
-	}
-
     abstract public function ruleset(): array;
 
-    public function appendErr(string $attr, string $flag, $par = [])
+    private function resolveRuleErr(string $attr, string $flag, $par = [])
     {
         $msg = $this->resolveErr()[$flag] ?? '';
 
@@ -107,6 +87,11 @@ abstract class Model
             $msg = str_replace("{{$k}}", $val, $msg);
         }
 
+        $this->err[$attr][] = $msg;
+    }
+
+    public function appendErr(string $attr, string $msg)
+    {
         $this->err[$attr][] = $msg;
     }
 
@@ -120,5 +105,25 @@ abstract class Model
             self::RL_MATCH => 'This field must match {matches}.',
             self::RL_UNIQ => 'This {input} already exists.',
         ];
+    }
+
+    public function get_label($attr)
+    {
+        return $this->inputLabels()[$attr] ?? $attr;
+    }
+
+    public function inputLabels(): array
+    {
+        return [];
+    }
+
+    public function hasErr($attr)
+    {
+        return $this->err[$attr] ?? false;
+    }
+
+    public function firstErr($attr)
+    {
+        return $this->err[$attr][0] ?? false;
     }
 }

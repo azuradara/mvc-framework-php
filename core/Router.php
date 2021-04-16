@@ -47,7 +47,7 @@ class Router
             $callback[0] = Application::$app->controller;
         }
 
-        return call_user_func($callback, $this->req);
+        return call_user_func($callback, $this->req, $this->res);
     }
 
     public function renderView($view, $crumbs = [])

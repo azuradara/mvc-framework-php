@@ -23,10 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a600e450-645f-45b1-92c0-9de26ed3d0ab" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/models/Login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/BaseDBModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/BaseDBModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/forms/Form.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms/Form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/forms/Input.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/forms/Input.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/_main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/_main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/signup.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +105,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="PHPUnit.mvc-framework-php">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="mvc-framework-php" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner directory="$PROJECT_DIR$/public" />
       <method v="2" />
@@ -126,7 +151,7 @@
       <workItem from="1618547016097" duration="106000" />
       <workItem from="1618547242037" duration="890000" />
       <workItem from="1618548286420" duration="531000" />
-      <workItem from="1618548880987" duration="3043000" />
+      <workItem from="1618548880987" duration="6199000" />
     </task>
     <servers />
   </component>

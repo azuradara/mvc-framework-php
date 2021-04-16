@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
+use app\core\Response;
+use app\models\Login;
 use app\models\User;
 
 class AuthController extends Controller
@@ -13,9 +15,20 @@ class AuthController extends Controller
     // $this->socketView('blank');
     // this method to socket content in a different view
 
-    public function login()
+    public function login(Request $req, Response $res)
     {
-        return $this->render('login');
+        $login = new Login();
+
+        if ($req->isPOST()) {
+            $login->getData($req->getReqBody());
+
+            if ($login->validate() && $login->login()) {
+                $res->redirect('/');
+                return;
+            }
+        }
+
+        return $this->render('login', ['model' => $login]);
     }
 
     public function signup(Request $req)

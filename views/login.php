@@ -1,22 +1,20 @@
 <?php
-/** @var $model \app\models\User */
+/** @var $model \app\models\Login */
 ?>
 
 <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
     <section>
-        <h1 class="text-4xl font-bold mb-7 text-center">Sign Up</h1>
+        <h1 class="text-4xl font-bold mb-7 text-center">Log In</h1>
         <?php $form = \app\core\forms\Form::open('', 'post'); ?>
         <div class="flex flex-col">
 
             <?php echo $form->input($model, 'userUsername'); ?>
-            <?php echo $form->input($model, 'userEmail'); ?>
             <?php echo $form->input($model, 'userPwd')->toPwd(); ?>
-            <?php echo $form->input($model, 'userPwdRpt')->toPwd(); ?>
 
             <button
                     class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 my-3"
                     type="submit" name="submit">
-                Sign Up
+                Log In
             </button>
 
         </div>
