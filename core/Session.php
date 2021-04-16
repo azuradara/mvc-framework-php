@@ -49,4 +49,19 @@ class Session
 
         $_SESSION[self::POP_KEY] = $pops;
     }
+
+    public function set($k, $v)
+    {
+        $_SESSION[$k] = $v;
+    }
+
+    public function get($k)
+    {
+        return $_SESSION[$k] ?? false;
+    }
+
+    public function del($k)
+    {
+        unset($_SESSION[$k]);
+    }
 }

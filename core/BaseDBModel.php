@@ -25,7 +25,7 @@ abstract class BaseDBModel extends Model
         return true;
     }
 
-    public function fetchOne($loc)
+    public static function fetchOne($loc)
     {
         $table = static::get_table();
 //        call gettable on the class instead of this abstract
@@ -44,9 +44,11 @@ abstract class BaseDBModel extends Model
         // return object as instance of invoker class (ye it took a few braincells)
     }
 
-    abstract public function get_table(): string;
+    abstract public static function get_table(): string;
 
     abstract public function get_rows(): array;
+
+    abstract public static function get_pk(): string;
 
     public static function prepare($sql)
     {

@@ -29,7 +29,7 @@ class Login extends Model
 
     public function login()
     {
-        $user = (new User)->fetchOne(['userUsername' => $this->userUsername]);
+        $user = User::fetchOne(['userUsername' => $this->userUsername]);
         if (!$user) {
             $this->appendErr('userUsername', "We can't find an account with this username.");
             return false;
@@ -42,6 +42,6 @@ class Login extends Model
 
         var_dump($user);
 
-        return Application::$app->login();
+        return Application::$app->login($user);
     }
 }

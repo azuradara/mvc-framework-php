@@ -1,5 +1,5 @@
 <?php
-
+    var_dump(\app\core\Application::$app->user);
 ?>
 
 <!doctype html>

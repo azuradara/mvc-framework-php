@@ -25,7 +25,7 @@ class User extends BaseDBModel
         return parent::push();
     }
 
-    public function get_table(): string
+    public static function get_table(): string
     {
         return 'user';
     }
@@ -53,5 +53,10 @@ class User extends BaseDBModel
             'userPwd' => 'Password',
             'userPwdRpt' => 'Confirm Password',
         ];
+    }
+
+    public static function get_pk(): string
+    {
+        return 'userId';
     }
 }

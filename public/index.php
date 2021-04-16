@@ -9,11 +9,12 @@ $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 $config = [
+    'userClass' => \app\models\User::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
         'pwd' => $_ENV['DB_PWD'],
-    ]
+    ],
 ];
 
 $app = new Application(dirname(__DIR__), $config);
