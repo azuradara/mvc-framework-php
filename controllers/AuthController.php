@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Request;
-use app\models\SignupModel;
+use app\models\User;
 
 class Authcontroller extends Controller
 {
@@ -19,24 +19,24 @@ class Authcontroller extends Controller
 
     public function signup(Request $req)
     {
-        $signupModel = new SignupModel();
+        $user = new User();
         $err = [];
 
         if ($req->isPOST()) {
-            $signupModel->getData($req->getReqBody());
+            $user->getData($req->getReqBody());
 
-            // var_dump($signupModel);
+            // var_dump($user);
 
-            if ($signupModel->validate() && $signupModel->register()) {
+            if ($user->validate() && $user->push()) {
                 return 'sgood';
             }
 
-            var_dump($signupModel->err);
+            var_dump($user->err);
 
-            return $this->render('signup', ['model' => $signupModel]);
+            return $this->render('signup', ['model' => $user]);
         }
 
 
-        return $this->render('signup', ['model' => $signupModel]);
+        return $this->render('signup', ['model' => $user]);
     }
 }

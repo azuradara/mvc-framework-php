@@ -7,9 +7,11 @@ class m01_init {
 		$sql = '		
 		create table user (
 			userId serial primary key,
+			userState int not null,
 			userUsername varchar(16) not null,
 			userEmail varchar(64) not null,
-			userPwd varchar(64) not null
+			userPwd varchar(64) not null,
+			userCreationDate timestamp default current_timestamp
 		);
 		';
 		$db->driver->exec($sql);
