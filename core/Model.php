@@ -4,7 +4,6 @@ namespace app\core;
 
 abstract class Model
 {
-
     public const RL_REQUIRED = 'required';
     public const RL_EMAIL = 'email';
     public const RL_MIN = 'min';
@@ -14,6 +13,11 @@ abstract class Model
 
     public array $err = [];
 
+    public function inputLabels(): array
+    {
+        return [];
+    }
+
     public function getData($data)
     {
         foreach ($data as $k => $val) {
@@ -21,6 +25,11 @@ abstract class Model
                 $this->{$k} = $val;
             }
         }
+    }
+
+    public function get_label($attr)
+    {
+        return $this->inputLabels()[$attr] ?? $attr;
     }
 
     public function validate()
@@ -52,6 +61,7 @@ abstract class Model
                 }
 
                 if ($flag === self::RL_MATCH && $val !== $this->{$rule['matches']}) {
+                    $rule['matches'] = $this->get_label($rule['matches']);
                     $this->appendErr($attr, self::RL_MATCH, $rule);
                 }
 
@@ -68,9 +78,8 @@ abstract class Model
                     $not_unique = $stmt->fetchObject();
 
                     if ($not_unique) {
-                        $this->appendErr($attr, self::RL_UNIQ, ['input' => $attr]);
+                        $this->appendErr($attr, self::RL_UNIQ, ['input' => $this->get_label($attr)]);
                     }
-
                 }
             }
         }

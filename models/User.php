@@ -43,4 +43,14 @@ class User extends BaseDBModel
             'userPwdRpt' => [self::RL_REQUIRED, [self::RL_MATCH, 'matches' => 'userPwd']],
         ];
     }
+
+    public function inputLabels(): array
+    {
+        return [
+            'userUsername' => 'Username',
+            'userEmail' => 'Email',
+            'userPwd' => 'Password',
+            'userPwdRpt' => 'Confirm Password',
+        ];
+    }
 }

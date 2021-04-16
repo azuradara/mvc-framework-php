@@ -39,7 +39,7 @@ class Input
 			</div>
 		',
             $this->attr,
-            $this->attr,
+            $this->model->get_label($this->attr),
             $this->type,
             $this->attr,
             $this->model->{$this->attr},
