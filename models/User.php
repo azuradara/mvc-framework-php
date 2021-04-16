@@ -2,9 +2,10 @@
 
 namespace app\models;
 
-use app\core\BaseDBModel;
+//use app\core\BaseDBModel;
+use app\core\UserModel;
 
-class User extends BaseDBModel
+class User extends UserModel
 {
     const STATE_ON = 0;
     const STATE_OFF = 1;
@@ -58,5 +59,12 @@ class User extends BaseDBModel
     public static function get_pk(): string
     {
         return 'userId';
+    }
+
+    public function getDisplayName(): string
+    {
+        // TODO: Implement getDisplayName() method.
+
+        return $this->userUsername;
     }
 }

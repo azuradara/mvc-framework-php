@@ -38,7 +38,14 @@ class Application
         if ($pval) {
             $pk = $this->userClass::get_pk();
             $this->user = $this->userClass::fetchOne([$pk => $pval]);
+        } else {
+            $this->user = null;
         }
+    }
+
+    public static function guestUser()
+    {
+        return !self::$app->user;
     }
 
     public function run()
@@ -56,7 +63,7 @@ class Application
         $this->controller = $controller;
     }
 
-    public function login(BaseDBModel $user)
+    public function login(BaseDBModel $user): bool
     {
         $this->user = $user;
 
