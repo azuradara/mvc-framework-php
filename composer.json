@@ -1,15 +1,15 @@
 {
-    "name": "dara/php-mvc-core",
-    "description": "mvc framework for php",
-    "authors": [
-        {
-            "name": "Dara",
-            "email": "dara-@outlook.jp"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "app\\" : "./"
+  "name": "dara/mvc-framework-php",
+  "description": "mvc framework for php",
+  "authors": [
+    {
+      "name": "Dara",
+      "email": "dara-@outlook.jp"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
         }
     },
     "require": {

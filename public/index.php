@@ -1,7 +1,7 @@
 <?php
 
 use app\controllers\AppController;
-use app\controllers\Authcontroller;
+use app\controllers\AuthController;
 use app\core\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -24,10 +24,10 @@ $app->router->get('/contact', [AppController::class, '_render_contact']);
 
 $app->router->post('/contact', [AppController::class, '_wrangle_contact']);
 
-$app->router->get('/login', [Authcontroller::class, 'login']);
-$app->router->get('/signup', [Authcontroller::class, 'signup']);
+$app->router->get('/login', [AuthController::class, 'login']);
+$app->router->get('/signup', [AuthController::class, 'signup']);
 
-$app->router->post('/login', [Authcontroller::class, 'login']);
-$app->router->post('/signup', [Authcontroller::class, 'signup']);
+$app->router->post('/login', [AuthController::class, 'login']);
+$app->router->post('/signup', [AuthController::class, 'signup']);
 
 $app->run();

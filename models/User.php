@@ -8,7 +8,7 @@ class User extends BaseDBModel
 {
     const STATE_ON = 0;
     const STATE_OFF = 1;
-    const STATE_RM = 2; 
+    const STATE_RM = 2;
 
 
     public string $userUsername = '';
