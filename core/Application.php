@@ -8,6 +8,11 @@ use Exception;
 
 class Application
 {
+    const EV_PRE_REQ = 'preReq';
+    const EV_POST_REQ = 'postReq';
+
+    protected array $eventListeners = [];
+
     public static string $ROOT_DIR;
     public static Application $app;
 
@@ -55,6 +60,9 @@ class Application
 
     public function run()
     {
+
+        $this->trigger(self::EV_PRE_REQ);
+
         try {
             echo $this->router->resolve();
         } catch (Exception $e) {
@@ -97,5 +105,18 @@ class Application
     {
         $this->user = null;
         $this->session->del('user');
+    }
+
+    public function on (string $event, $callback) {
+        $this->eventListeners[$event][] = $callback;
+    }
+
+    private function trigger(string $event)
+    {
+        $callbacks = $this->eventListeners[$event] ?? [];
+
+        foreach ($callbacks as $c) {
+            call_user_func($c);
+        }
     }
 }

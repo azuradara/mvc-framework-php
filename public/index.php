@@ -20,6 +20,10 @@ $config = [
 
 $app = new Application(dirname(__DIR__), $config);
 
+$app->on(Application::EV_PRE_REQ, function() {
+    echo 'pre-req';
+});
+
 $app->router->get('/', [AppController::class, '_render_home']);
 
 $app->router->get('/contact', [AppController::class, 'contact']);
