@@ -23,20 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a600e450-645f-45b1-92c0-9de26ed3d0ab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/exceptions/ForbiddenExc.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/exceptions/NotFoundExc.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/middlewares/AuthMD.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/middlewares/RootMD.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mvc-framework-php.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mvc-framework-php.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Application.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/_404.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/_error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/_blank.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/_blank.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/_main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/_main.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

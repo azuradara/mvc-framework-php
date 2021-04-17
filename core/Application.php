@@ -54,6 +54,7 @@ class Application
         try {
             echo $this->router->resolve();
         } catch (\Exception $e) {
+            $this->res->setStatusCode($e->getCode());
             echo $this->router->renderView('_error', [
                 'e' => $e
             ]);
