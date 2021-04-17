@@ -6,13 +6,14 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Request;
+use JetBrains\PhpStorm\Pure;
 
 // use \app\core\Application;
 
 class AppController extends Controller
 {
 
-    public function _render_home()
+    public function _render_home(): bool|array|string
     {
         $crumbs = [
             'test' => 'test'
@@ -21,14 +22,13 @@ class AppController extends Controller
         return $this->render('home', $crumbs);
     }
 
-    public function _render_contact()
+    public function _render_contact(): bool|array|string
     {
         return $this->render('contact');
     }
 
-    public function _wrangle_contact(Request $req)
+    #[Pure] public function _wrangle_contact(Request $req): string
     {
-        $req->getReqBody();
         return 'Wrangling tards';
     }
 }

@@ -4,7 +4,9 @@
 namespace app\core\exceptions;
 
 
-class NotFoundExc extends \Exception
+use Exception;
+
+class NotFoundExc extends Exception
 {
     protected $message = "Page Not Found.";
     protected $code = 404;

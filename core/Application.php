@@ -4,6 +4,8 @@
 
 namespace app\core;
 
+use Exception;
+
 class Application
 {
     public static string $ROOT_DIR;
@@ -46,7 +48,7 @@ class Application
         }
     }
 
-    public static function guestUser()
+    public static function guestUser(): bool
     {
         return !self::$app->user;
     }
@@ -55,7 +57,7 @@ class Application
     {
         try {
             echo $this->router->resolve();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->res->setStatusCode($e->getCode());
             echo $this->view->renderView('_error', [
                 'e' => $e
@@ -63,15 +65,21 @@ class Application
         }
     }
 
-    public function getController(): Controller
-    {
-        return $this->controller;
-    }
+// --Commented out by Inspection START (4/17/2021 5:15 AM):
+//    public function getController(): Controller
+//    {
+//        return $this->controller;
+//    }
+// --Commented out by Inspection STOP (4/17/2021 5:15 AM)
 
-    public function setController(Controller $controller): void
-    {
-        $this->controller = $controller;
-    }
+
+// --Commented out by Inspection START (4/17/2021 5:15 AM):
+//    public function setController(Controller $controller): void
+//    {
+//        $this->controller = $controller;
+//    }
+// --Commented out by Inspection STOP (4/17/2021 5:15 AM)
+
 
     public function login(BaseDBModel $user): bool
     {

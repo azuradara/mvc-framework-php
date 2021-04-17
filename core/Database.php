@@ -2,9 +2,11 @@
 
 namespace app\core;
 
+use PDO;
+
 class Database
 {
-    public \PDO $driver;
+    public PDO $driver;
 
     public function __construct(array $dbConfig)
     {
@@ -13,10 +15,11 @@ class Database
         $pwd = $dbConfig['pwd'] ?? '';
 
 
-        $this->driver = new \PDO($dsn, $user, $pwd);
-        $this->driver->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        $this->driver = new PDO($dsn, $user, $pwd);
+        $this->driver->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
+    /** @noinspection PhpIncludeInspection */
     public function migrate()
     {
         $this->initiateDB();
@@ -68,12 +71,12 @@ class Database
 		');
     }
 
-    public function getMigs()
+    public function getMigs(): array
     {
         $stmt = $this->driver->prepare('select mig from migs');
         $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_COLUMN);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
     public function saveMigs(array $migs)

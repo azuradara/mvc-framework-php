@@ -1,5 +1,6 @@
 <?php
-
+/** @var $this \app\core\View */
+$this->title = 'Contact'
 ?>
 <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
     <section>
@@ -43,7 +44,7 @@
 
 <style>
     label {
-        top: 0%;
+        top: 0;
         transform: translateY(-50%);
         font-size: 11px;
         color: rgba(37, 99, 235, 1);
