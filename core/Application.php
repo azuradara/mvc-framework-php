@@ -18,6 +18,7 @@ class Application
     public ?Controller $controller = null;
     public Session $session;
     public ?BaseDBModel $user;
+    public View $view;
 
     public function __construct($root, array $config)
     {
@@ -30,6 +31,7 @@ class Application
         $this->req = new Request();
         $this->res = new Response();
         $this->router = new Router($this->req, $this->res);
+        $this->view = new View();
 
 //        never use external classes inside the core
 
@@ -55,7 +57,7 @@ class Application
             echo $this->router->resolve();
         } catch (\Exception $e) {
             $this->res->setStatusCode($e->getCode());
-            echo $this->router->renderView('_error', [
+            echo $this->view->renderView('_error', [
                 'e' => $e
             ]);
         }

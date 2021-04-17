@@ -16,7 +16,7 @@ abstract class Controller
 
     public function render($view, $crumbs = [])
     {
-        return Application::$app->router->renderView($view, $crumbs);
+        return Application::$app->view->renderView($view, $crumbs);
     }
 
     public function socketView($layout)

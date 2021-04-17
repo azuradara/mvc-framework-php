@@ -44,7 +44,6 @@ class Input
             $this->attr,
             $this->model->{$this->attr},
             $this->model->hasErr($this->attr) ? 'border-red-500' : '',
-            $this->model->firstErr($this->attr)
-        );
+            $this->model->firstErr($this->attr));
     }
 } 
