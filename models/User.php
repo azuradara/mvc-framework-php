@@ -8,15 +8,15 @@ use JetBrains\PhpStorm\ArrayShape;
 
 class User extends UserModel
 {
-    // --Commented out by Inspection (4/17/2021 5:15 AM):const STATE_ON = 0;
+    const STATE_ON = 0;
     const STATE_OFF = 1;
-    // --Commented out by Inspection (4/17/2021 5:15 AM):const STATE_RM = 2;
+    const STATE_RM = 2;
 
 
     public string $userUsername = '';
-    // --Commented out by Inspection (4/17/2021 5:15 AM):public string $userEmail = '';
+    public string $userEmail = '';
     public string $userPwd = '';
-    // --Commented out by Inspection (4/17/2021 5:15 AM):public string $userPwdRpt = '';
+    public string $userPwdRpt = '';
 
     public int $userState = self::STATE_OFF;
 

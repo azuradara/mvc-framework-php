@@ -15,7 +15,7 @@ $this->title = 'Contact'
 
             <?php echo $form->input($model, 'name') ?>
             <?php echo $form->input($model, 'email') ?>
-            <?php echo new TextAreaInput($model, 'Address') ?>
+            <?php echo new TextAreaInput($model, 'address') ?>
 
             <button
                     class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 my-3"
