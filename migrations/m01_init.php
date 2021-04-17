@@ -2,7 +2,7 @@
 
 //namespace app\migrations;
 
-//use app\core\Application;
+use app\core\Application;
 
 class m01_init
 {
