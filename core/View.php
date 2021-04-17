@@ -1,6 +1,4 @@
-<?php /** @noinspection PhpIncludeInspection */
-
-/** @noinspection PhpIncludeInspection */
+<?php
 
 
 namespace app\core;
@@ -12,23 +10,10 @@ class View
 
     public function renderView($view, $crumbs = []): array|bool|string
     {
-        $viewContent = $this->renderViewContent($view, $crumbs);
         $layoutContent = $this->layoutContent();
+        $viewContent = $this->renderViewContent($view, $crumbs);
 
         return str_replace('{{content}}', $viewContent, $layoutContent);
-    }
-
-    protected function renderViewContent($view, $crumbs): bool|string
-    {
-        foreach ($crumbs as $k => $val) {
-            // if $k evaluates as name, $$k evans as var name
-            $$k = $val;
-        }
-
-        ob_start();
-        include_once Application::$ROOT_DIR . "/views/$view.php";
-
-        return ob_get_clean();
     }
 
     public function layoutContent(): bool|string
@@ -41,6 +26,19 @@ class View
         ob_start();
 
         include_once Application::$ROOT_DIR . "/views/layouts/_$layout.php";
+
+        return ob_get_clean();
+    }
+
+    protected function renderViewContent($view, $crumbs): bool|string
+    {
+        foreach ($crumbs as $k => $val) {
+            // if $k evals as name, $$k evans as var name
+            $$k = $val;
+        }
+
+        ob_start();
+        include_once Application::$ROOT_DIR . "/views/$view.php";
 
         return ob_get_clean();
     }

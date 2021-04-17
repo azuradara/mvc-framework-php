@@ -17,9 +17,6 @@ class AuthMD implements RootMD
         $this->deeds = $deeds;
     }
 
-    /**
-     * @throws \app\core\exceptions\ForbiddenExc
-     */
     public function exec()
     {
         if (Application::guestUser()) {

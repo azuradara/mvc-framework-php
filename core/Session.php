@@ -31,7 +31,7 @@ class Session
 
     public function getPop($key)
     {
-//        var_dump($_SESSION[self::POP_KEY]); this hurt
+//        var_dump($_SESSION[self::POP_KEY]); this hurted
         return $_SESSION[self::POP_KEY][$key]['value'] ?? false;
     }
 

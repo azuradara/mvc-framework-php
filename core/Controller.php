@@ -7,27 +7,24 @@ use app\core\middlewares\RootMD;
 abstract class Controller
 {
 
-    public string $layout = 'main';
+    public $layout = 'main';
     public string $deed = '';
     /*
      * @var \app\core\middlewares\RootMD[]
      */
     protected array $mds = [];
 
-    public function render($view, $crumbs = []): bool|array|string
+    public function render($view, $crumbs = [])
     {
         return Application::$app->view->renderView($view, $crumbs);
     }
 
-// --Commented out by Inspection START (4/17/2021 5:15 AM):
-//    public function socketView($layout)
-//    {
-//        $this->layout = $layout;
-//    }
-// --Commented out by Inspection STOP (4/17/2021 5:15 AM)
+    public function socketView($layout)
+    {
+        $this->layout = $layout;
+    }
 
-
-    public function getMds(): array
+    public function getMds()
     {
         return $this->mds;
     }

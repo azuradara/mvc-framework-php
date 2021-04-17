@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /** @var $this \app\core\View */
 
 /** @var $model \app\models\ContactForm */
@@ -6,6 +7,9 @@
 use app\core\forms\TextAreaInput;
 
 $this->title = 'Contact'
+=======
+
+>>>>>>> parent of 1b329ad (this might break it all)
 ?>
 <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
     <section>
@@ -31,7 +35,7 @@ $this->title = 'Contact'
 
 <style>
     label {
-        top: 0;
+        top: 0%;
         transform: translateY(-50%);
         font-size: 11px;
         color: rgba(37, 99, 235, 1);

@@ -1,9 +1,5 @@
 <?php
-/** @var $this \app\core\View */
-
-use app\core\Application;
-
-var_dump(Application::$app->user);
+var_dump(\app\core\Application::$app->user);
 ?>
 
 <!doctype html>
@@ -13,7 +9,7 @@ var_dump(Application::$app->user);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.1/tailwind.min.css">
-    <title><?php echo $this->title ?></title>
+    <title>~</title>
 
     <style>
         #menu-toggle:checked + #menu {
@@ -61,7 +57,7 @@ var_dump(Application::$app->user);
                 <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
                        href="/contact">Contact</a></li>
 
-                <?php if (Application::guestUser()): ?>
+                <?php if (\app\core\Application::guestUser()): ?>
                     <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
                            href="/login">Log In</a></li>
                     <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
@@ -70,9 +66,9 @@ var_dump(Application::$app->user);
             </ul>
         </nav>
 
-        <?php if (!Application::guestUser()): ?>
+        <?php if (!\app\core\Application::guestUser()): ?>
             <a href="/profile" class="lg:ml-4 flex items-center justify-center lg:mb-0 mb-4 pointer-cursor">
-                <p class="ml-5 mr-2"><?php echo Application::$app->user->getDisplayName() ?></p>
+                <p class="ml-5 mr-2"><?php echo \app\core\Application::$app->user->getDisplayName() ?></p>
                 <img class="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400"
                      src="https://picsum.photos/200" alt="John Doe">
             </a>
@@ -83,7 +79,7 @@ var_dump(Application::$app->user);
 
 <main>
     <div class="container mx-auto">
-        <?php if (Application::$app->session->getPop('success')): ?>
+        <?php if (\app\core\Application::$app->session->getPop('success')): ?>
             <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md"
                  role="alert">
                 <div class="flex">
@@ -94,7 +90,7 @@ var_dump(Application::$app->user);
                         </svg>
                     </div>
                     <div>
-                        <p class="font-bold"><?php echo Application::$app->session->getPop('success') ?></p>
+                        <p class="font-bold"><?php echo \app\core\Application::$app->session->getPop('success') ?></p>
                     </div>
                 </div>
             </div>

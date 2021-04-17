@@ -5,14 +5,13 @@ namespace app\models;
 
 use app\core\Application;
 use app\core\Model;
-use JetBrains\PhpStorm\ArrayShape;
 
 class Login extends Model
 {
     public string $userUsername = '';
     public string $userPwd = '';
 
-    #[ArrayShape(['userUsername' => "array", 'userPwd' => "array"])] public function ruleset(): array
+    public function ruleset(): array
     {
         return [
             'userUsername' => [self::RL_REQUIRED],
@@ -20,7 +19,7 @@ class Login extends Model
         ];
     }
 
-    #[ArrayShape(['userUsername' => "string", 'userPwd' => "string"])] public function inputLabels(): array
+    public function inputLabels(): array
     {
         return [
             'userUsername' => 'Username',
@@ -28,7 +27,7 @@ class Login extends Model
         ];
     }
 
-    public function login(): bool
+    public function login()
     {
         $user = User::fetchOne(['userUsername' => $this->userUsername]);
         if (!$user) {

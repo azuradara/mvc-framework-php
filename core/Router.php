@@ -8,7 +8,7 @@ use app\core\exceptions\NotFoundExc;
 
 class Router
 {
-    // --Commented out by Inspection (4/17/2021 5:15 AM):public string $layout = 'main';
+    public string $layout = 'main';
     public Request $req;
     public Response $res;
     protected array $routes = [];

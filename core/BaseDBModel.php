@@ -2,8 +2,6 @@
 
 namespace app\core;
 
-use PDOStatement;
-
 abstract class BaseDBModel extends Model
 {
     public static function fetchOne($loc)
@@ -25,16 +23,9 @@ abstract class BaseDBModel extends Model
         // return object as instance of invoker class (ye it took a few braincells)
     }
 
-    abstract public static function get_table(): string;
-
-    public static function prepare($sql): bool|PDOStatement
-    {
-        return Application::$app->db->driver->prepare($sql);
-    }
-
     abstract public static function get_pk(): string;
 
-    public function push(): bool
+    public function push()
     {
         // TODO: introspect schema to get attributes instead of getting them manually
         $table = $this->get_table();
@@ -55,5 +46,12 @@ abstract class BaseDBModel extends Model
         return true;
     }
 
+    abstract public static function get_table(): string;
+
     abstract public function get_rows(): array;
+
+    public static function prepare($sql)
+    {
+        return Application::$app->db->driver->prepare($sql);
+    }
 }

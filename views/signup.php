@@ -1,17 +1,11 @@
 <?php
 /** @var $model \app\models\User */
-
-/** @var $this \app\core\View */
-
-use app\core\forms\Form;
-
-$this->title = 'Sign Up'
 ?>
 
 <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
     <section>
         <h1 class="text-4xl font-bold mb-7 text-center">Sign Up</h1>
-        <?php $form = Form::open('', 'post'); ?>
+        <?php $form = \app\core\forms\Form::open('', 'post'); ?>
         <div class="flex flex-col">
 
             <?php echo $form->input($model, 'userUsername'); ?>
@@ -26,7 +20,7 @@ $this->title = 'Sign Up'
             </button>
 
         </div>
-        <?php Form::close() ?>
+        <?php \app\core\forms\Form::close() ?>
 
     </section>
 </main>
@@ -42,7 +36,7 @@ $this->title = 'Sign Up'
 
 <style>
     label {
-        top: 0;
+        top: 0%;
         transform: translateY(-50%);
         font-size: 11px;
         color: rgba(37, 99, 235, 1);
