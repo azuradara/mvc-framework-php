@@ -1,43 +1,30 @@
 <?php
 /** @var $this \app\core\View */
+
+/** @var $model \app\models\ContactForm */
+
+use app\core\forms\TextAreaInput;
+
 $this->title = 'Contact'
 ?>
 <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
     <section>
-        <form class="flex flex-col" action="" method="post">
-            <h1 class="text-4xl font-bold mb-7 text-center">Contact</h1>
+        <h1 class="text-4xl font-bold mb-7 text-center">Contact</h1>
+        <?php $form = \app\core\forms\Form::open('', 'post') ?>
+        <div class="flex flex-col">
 
-            <div class="relative h-10 input-component mb-5 empty">
-                <input id="name" type="text" name="name"
-                       class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"/>
-                <label for="name" class="absolute left-2 transition-all bg-white px-1">
-                    Name
-                </label>
-            </div>
-            <!-- This is the input component -->
-            <div class="relative h-10 input-component mb-5 empty">
-                <input id="email" type="text" name="email"
-                       class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"/>
-                <label for="email" class="absolute left-2 transition-all bg-white px-1">
-                    E-mail
-                </label>
-            </div>
-            <!-- This is the input component -->
-            <div class="relative h-10 input-component empty">
-                <input id="address" type="text" name="address"
-                       class="h-full w-full border-gray-300 px-2 transition-all border-blue rounded-sm"/>
-                <label for="address" class="absolute left-2 transition-all bg-white px-1">
-                    Address
-                </label>
-            </div>
+            <?php echo $form->input($model, 'name') ?>
+            <?php echo $form->input($model, 'email') ?>
+            <?php echo new TextAreaInput($model, 'Address') ?>
 
             <button
                     class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200 my-3"
                     type="submit" name="submit">
                 Send
             </button>
+        </div>
 
-        </form>
+        <?php $form = \app\core\forms\Form::open('', 'post') ?>
     </section>
 </main>
 

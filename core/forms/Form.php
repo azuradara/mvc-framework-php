@@ -19,8 +19,8 @@ class Form
         echo "</form>";
     }
 
-    #[Pure] public function input(Model $model, $attr): Input
+    #[Pure] public function input(Model $model, $attr): RegInput
     {
-        return new Input($model, $attr);
+        return new RegInput($model, $attr);
     }
 }

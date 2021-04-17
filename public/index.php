@@ -22,9 +22,9 @@ $app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', [AppController::class, '_render_home']);
 
-$app->router->get('/contact', [AppController::class, '_render_contact']);
+$app->router->get('/contact', [AppController::class, 'contact']);
 
-$app->router->post('/contact', [AppController::class, '_wrangle_contact']);
+$app->router->post('/contact', [AppController::class, 'contact']);
 
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->get('/signup', [AuthController::class, 'signup']);
