@@ -34,4 +34,6 @@ $app->router->post('/signup', [AuthController::class, 'signup']);
 // TODO: make logout method POST instead of GET for security reasons
 $app->router->get('/logout', [AuthController::class, 'logout']);
 
+$app->router->get('/profile', [AuthController::class, 'profile']);
+
 $app->run();

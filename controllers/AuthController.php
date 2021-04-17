@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\middlewares\AuthMD;
 use app\core\Request;
 use app\core\Response;
 use app\models\Login;
@@ -14,6 +15,11 @@ class AuthController extends Controller
 
     // $this->socketView('blank');
     // this method to socket content in a different view
+
+    public function __construct()
+    {
+        $this->setMds(new AuthMD(['profile']));
+    }
 
     public function login(Request $req, Response $res)
     {
@@ -60,5 +66,10 @@ class AuthController extends Controller
     {
         Application::$app->logout();
         $res->redirect('/');
+    }
+
+    public function profile()
+    {
+        return $this->render('profile');
     }
 }

@@ -4,6 +4,8 @@
 
 namespace app\core;
 
+use app\core\exceptions\NotFoundExc;
+
 class Router
 {
     public string $layout = 'main';
@@ -27,6 +29,9 @@ class Router
         $this->routes['post'][$path] = $callback;
     }
 
+    /**
+     * @throws \app\core\exceptions\NotFoundExc
+     */
     public function resolve()
     {
         $path = $this->req->getPath();
@@ -34,8 +39,7 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) {
-            $this->res->setStatusCode(404);
-            return $this->renderView('_404');
+            throw new NotFoundExc;
         }
 
         if (is_string($callback)) {
@@ -43,8 +47,15 @@ class Router
         }
 
         if (is_array($callback)) {
-            Application::$app->controller = new $callback[0]();
-            $callback[0] = Application::$app->controller;
+            /* @var \app\core\Controller $controller*/
+            $controller = new $callback[0]();
+            Application::$app->controller = $controller;
+            $controller->deed = $callback[1];
+            $callback[0] = $controller;
+
+            foreach ($controller->getMds() as $md) {
+                $md->exec();
+            }
         }
 
         return call_user_func($callback, $this->req, $this->res);
@@ -60,7 +71,10 @@ class Router
 
     protected function layoutContent()
     {
-        $layout = Application::$app->controller->layout;
+        $layout = Application::$app->layout;
+        if (Application::$app->controller) {
+            $layout = Application::$app->controller->layout;
+        }
 
         ob_start();
 

@@ -10,11 +10,12 @@ class Application
     public static Application $app;
 
     public string $userClass;
+    public string $layout = 'main';
     public Database $db;
     public Router $router;
     public Request $req;
     public Response $res;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public Session $session;
     public ?BaseDBModel $user;
 
@@ -50,7 +51,13 @@ class Application
 
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (\Exception $e) {
+            echo $this->router->renderView('_error', [
+                'e' => $e
+            ]);
+        }
     }
 
     public function getController(): Controller

@@ -16,6 +16,16 @@
             display: block;
         }
     </style>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+            rel="apple-touch-icon"
+            sizes="76x76"
+            href="./assets/img/apple-icon.png"
+    />
+
 </head>
 
 <body class="antialiased bg-gray-200">
@@ -57,7 +67,7 @@
         </nav>
 
         <?php if(!\app\core\Application::guestUser()): ?>
-            <a href="#" class="lg:ml-4 flex items-center justify-center lg:mb-0 mb-4 pointer-cursor">
+            <a href="/profile" class="lg:ml-4 flex items-center justify-center lg:mb-0 mb-4 pointer-cursor">
                 <p class="ml-5 mr-2"><?php echo \app\core\Application::$app->user->getDisplayName() ?></p>
                 <img class="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400" src="https://picsum.photos/200" alt="John Doe">
             </a>
