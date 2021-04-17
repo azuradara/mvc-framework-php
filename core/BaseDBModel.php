@@ -4,6 +4,27 @@ namespace app\core;
 
 abstract class BaseDBModel extends Model
 {
+    public static function fetchOne($loc)
+    {
+        $table = static::get_table();
+//        call gettable on the class instead of this abstract
+        $attr = array_keys($loc);
+        $sql = implode("AND ", array_map(fn($a) => "$a = :$a", $attr));
+
+        $stmt = self::prepare("SELECT * FROM $table WHERE $sql");
+
+        foreach ($loc as $k => $v) {
+            $stmt->bindValue(":$k", "$v");
+        }
+
+        $stmt->execute();
+
+        return $stmt->fetchObject(static::class);
+        // return object as instance of invoker class (ye it took a few braincells)
+    }
+
+    abstract public static function get_pk(): string;
+
     public function push()
     {
         // TODO: introspect schema to get attributes instead of getting them manually
@@ -25,30 +46,9 @@ abstract class BaseDBModel extends Model
         return true;
     }
 
-    public static function fetchOne($loc)
-    {
-        $table = static::get_table();
-//        call gettable on the class instead of this abstract
-        $attr = array_keys($loc);
-        $sql = implode("AND ", array_map(fn($a) => "$a = :$a", $attr));
-
-        $stmt = self::prepare("SELECT * FROM $table WHERE $sql");
-
-        foreach($loc as $k => $v) {
-            $stmt->bindValue(":$k", "$v");
-        }
-
-        $stmt->execute();
-
-        return $stmt->fetchObject(static::class);
-        // return object as instance of invoker class (ye it took a few braincells)
-    }
-
     abstract public static function get_table(): string;
 
     abstract public function get_rows(): array;
-
-    abstract public static function get_pk(): string;
 
     public static function prepare($sql)
     {

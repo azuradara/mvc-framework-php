@@ -24,13 +24,13 @@ abstract class Controller
         $this->layout = $layout;
     }
 
-    public function setMds(RootMD $md)
-    {
-        $this->mds[] = $md;
-    }
-
     public function getMds()
     {
         return $this->mds;
+    }
+
+    public function setMds(RootMD $md)
+    {
+        $this->mds[] = $md;
     }
 }

@@ -47,7 +47,7 @@ class Router
         }
 
         if (is_array($callback)) {
-            /* @var \app\core\Controller $controller*/
+            /* @var \app\core\Controller $controller */
             $controller = new $callback[0]();
             Application::$app->controller = $controller;
             $controller->deed = $callback[1];

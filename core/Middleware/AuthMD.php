@@ -19,7 +19,7 @@ class AuthMD implements RootMD
 
     public function exec()
     {
-        if(Application::guestUser()) {
+        if (Application::guestUser()) {
             if (empty($this->deeds) || in_array(Application::$app->controller->deed, $this->deeds)) {
                 throw new ForbiddenExc();
             }

@@ -1,5 +1,5 @@
 <?php
-    var_dump(\app\core\Application::$app->user);
+var_dump(\app\core\Application::$app->user);
 ?>
 
 <!doctype html>
@@ -57,19 +57,20 @@
                 <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
                        href="/contact">Contact</a></li>
 
-                <?php if(\app\core\Application::guestUser()): ?>
-                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
-                       href="/login">Log In</a></li>
-                <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
-                       href="/signup">Sign Up</a></li>
+                <?php if (\app\core\Application::guestUser()): ?>
+                    <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                           href="/login">Log In</a></li>
+                    <li><a class="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-indigo-400"
+                           href="/signup">Sign Up</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
 
-        <?php if(!\app\core\Application::guestUser()): ?>
+        <?php if (!\app\core\Application::guestUser()): ?>
             <a href="/profile" class="lg:ml-4 flex items-center justify-center lg:mb-0 mb-4 pointer-cursor">
                 <p class="ml-5 mr-2"><?php echo \app\core\Application::$app->user->getDisplayName() ?></p>
-                <img class="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400" src="https://picsum.photos/200" alt="John Doe">
+                <img class="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400"
+                     src="https://picsum.photos/200" alt="John Doe">
             </a>
             <a href="/logout" class="ml-2">Log Out</a>
         <?php endif; ?>

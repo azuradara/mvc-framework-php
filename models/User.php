@@ -19,16 +19,21 @@ class User extends UserModel
 
     public int $userState = self::STATE_OFF;
 
+    public static function get_table(): string
+    {
+        return 'user';
+    }
+
+    public static function get_pk(): string
+    {
+        return 'userId';
+    }
+
     public function push()
     {
         $this->userState = self::STATE_OFF;
         $this->userPwd = password_hash($this->userPwd, PASSWORD_DEFAULT);
         return parent::push();
-    }
-
-    public static function get_table(): string
-    {
-        return 'user';
     }
 
     public function get_rows(): array
@@ -54,11 +59,6 @@ class User extends UserModel
             'userPwd' => 'Password',
             'userPwdRpt' => 'Confirm Password',
         ];
-    }
-
-    public static function get_pk(): string
-    {
-        return 'userId';
     }
 
     public function getDisplayName(): string

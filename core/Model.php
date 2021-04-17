@@ -90,11 +90,6 @@ abstract class Model
         $this->err[$attr][] = $msg;
     }
 
-    public function appendErr(string $attr, string $msg)
-    {
-        $this->err[$attr][] = $msg;
-    }
-
     public function resolveErr()
     {
         return [
@@ -115,6 +110,11 @@ abstract class Model
     public function inputLabels(): array
     {
         return [];
+    }
+
+    public function appendErr(string $attr, string $msg)
+    {
+        $this->err[$attr][] = $msg;
     }
 
     public function hasErr($attr)
