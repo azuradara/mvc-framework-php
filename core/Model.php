@@ -1,6 +1,9 @@
-<?php
+<?php /** @noinspection PhpUnnecessaryCurlyVarSyntaxInspection */
 
 namespace app\core;
+
+use JetBrains\PhpStorm\ArrayShape;
+use JetBrains\PhpStorm\Pure;
 
 abstract class Model
 {
@@ -22,7 +25,7 @@ abstract class Model
         }
     }
 
-    public function validate()
+    public function validate(): bool
     {
         foreach ($this->ruleset() as $attr => $ruleset) {
             $val = $this->{$attr};
@@ -90,7 +93,7 @@ abstract class Model
         $this->err[$attr][] = $msg;
     }
 
-    public function resolveErr()
+    #[ArrayShape([self::RL_REQUIRED => "string", self::RL_EMAIL => "string", self::RL_MIN => "string", self::RL_MAX => "string", self::RL_MATCH => "string", self::RL_UNIQ => "string"])] public function resolveErr(): array
     {
         return [
             self::RL_REQUIRED => 'This field is required.',
@@ -102,7 +105,7 @@ abstract class Model
         ];
     }
 
-    public function get_label($attr)
+    #[Pure] public function get_label($attr)
     {
         return $this->inputLabels()[$attr] ?? $attr;
     }

@@ -3,11 +3,12 @@
 namespace app\core\forms;
 
 use app\core\Model;
+use JetBrains\PhpStorm\Pure;
 
 class Form
 {
 
-    public static function open($action, $method)
+    public static function open($action, $method): Form
     {
         echo sprintf('<form action="%s" method="%s">', $action, $method);
         return new Form;
@@ -18,11 +19,7 @@ class Form
         echo "</form>";
     }
 
-<<<<<<< HEAD
     #[Pure] public function input(Model $model, $attr): RegInput
-=======
-    public function input(Model $model, $attr)
->>>>>>> parent of 1b329ad (this might break it all)
     {
         return new RegInput($model, $attr);
     }

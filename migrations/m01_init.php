@@ -9,7 +9,7 @@ class m01_init
     public function export()
     {
         $db = Application::$app->db;
-        $sql = '		
+        $sql = '
 		create table user (
 			userId serial primary key,
 			userState int not null,
@@ -25,9 +25,10 @@ class m01_init
     public function drop()
     {
         $db = Application::$app->db;
-        $sql = '		
+        $sql = '
 		drop table if exists user;
 		';
         $db->driver->exec($sql);
     }
 }
+

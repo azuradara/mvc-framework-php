@@ -4,6 +4,8 @@
 
 namespace app\core;
 
+use JetBrains\PhpStorm\Pure;
+
 class Request
 {
 
@@ -18,28 +20,31 @@ class Request
         return substr($path, 0, $pos);
     }
 
-    public function isGET()
-    {
-        return $this->method() === 'get';
-    }
+// --Commented out by Inspection START (4/17/2021 5:15 AM):
+//    #[Pure] public function isGET(): bool
+//    {
+//        return $this->method() === 'get';
+//    }
+// --Commented out by Inspection STOP (4/17/2021 5:15 AM)
+
 
     // HELPERS
 
-    public function method()
-    {
-        return strtolower($_SERVER['REQUEST_METHOD']);
-    }
-
-    public function isPOST()
+    #[Pure] public function isPOST(): bool
     {
         return $this->method() === 'post';
     }
 
+    public function method(): string
+    {
+        return strtolower($_SERVER['REQUEST_METHOD']);
+    }
+
     // HELPERS
 
-    public function getReqBody()
+    #[Pure] public function getReqBody(): array
     {
-        $postBody = [];
+        $reqBody = [];
 
         // filter_input ( int $type , string $var_name , int $filter = FILTER_DEFAULT , array|int $options = 0 ) : mixed
         // Idk how it works but it just does

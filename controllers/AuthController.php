@@ -21,7 +21,7 @@ class AuthController extends Controller
         $this->setMds(new AuthMD(['profile']));
     }
 
-    public function login(Request $req, Response $res)
+    public function login(Request $req, Response $res): bool|array|string
     {
         $login = new Login();
 
@@ -30,17 +30,17 @@ class AuthController extends Controller
 
             if ($login->validate() && $login->login()) {
                 $res->redirect('/');
-                return;
+                return true;
             }
         }
 
         return $this->render('login', ['model' => $login]);
     }
 
-    public function signup(Request $req)
+    public function signup(Request $req): bool|array|string
     {
         $user = new User();
-        $err = [];
+//        $err = [];
 
         if ($req->isPOST()) {
             $user->getData($req->getReqBody());
@@ -68,7 +68,7 @@ class AuthController extends Controller
         $res->redirect('/');
     }
 
-    public function profile()
+    public function profile(): bool|array|string
     {
         return $this->render('profile');
     }

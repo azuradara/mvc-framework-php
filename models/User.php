@@ -4,18 +4,19 @@ namespace app\models;
 
 //use app\core\BaseDBModel;
 use app\core\UserModel;
+use JetBrains\PhpStorm\ArrayShape;
 
 class User extends UserModel
 {
-    const STATE_ON = 0;
+    // --Commented out by Inspection (4/17/2021 5:15 AM):const STATE_ON = 0;
     const STATE_OFF = 1;
-    const STATE_RM = 2;
+    // --Commented out by Inspection (4/17/2021 5:15 AM):const STATE_RM = 2;
 
 
     public string $userUsername = '';
-    public string $userEmail = '';
+    // --Commented out by Inspection (4/17/2021 5:15 AM):public string $userEmail = '';
     public string $userPwd = '';
-    public string $userPwdRpt = '';
+    // --Commented out by Inspection (4/17/2021 5:15 AM):public string $userPwdRpt = '';
 
     public int $userState = self::STATE_OFF;
 
@@ -29,7 +30,7 @@ class User extends UserModel
         return 'userId';
     }
 
-    public function push()
+    public function push(): bool
     {
         $this->userState = self::STATE_OFF;
         $this->userPwd = password_hash($this->userPwd, PASSWORD_DEFAULT);
@@ -41,7 +42,7 @@ class User extends UserModel
         return ['userUsername', 'userEmail', 'userPwd', 'userState'];
     }
 
-    public function ruleset(): array
+    #[ArrayShape(['userUsername' => "array", 'userEmail' => "array", 'userPwd' => "array", 'userPwdRpt' => "array"])] public function ruleset(): array
     {
         return [
             'userUsername' => [self::RL_REQUIRED, [self::RL_MIN, 'val' => 3], [self::RL_MAX, 'val' => 16], [self::RL_UNIQ, 'class' => self::class]],
@@ -51,7 +52,7 @@ class User extends UserModel
         ];
     }
 
-    public function inputLabels(): array
+    #[ArrayShape(['userUsername' => "string", 'userEmail' => "string", 'userPwd' => "string", 'userPwdRpt' => "string"])] public function inputLabels(): array
     {
         return [
             'userUsername' => 'Username',
