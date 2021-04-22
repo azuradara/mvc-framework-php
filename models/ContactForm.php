@@ -14,7 +14,7 @@ class ContactForm extends \app\core\Model
     {
         return [
             'name' => [self::RL_REQUIRED],
-            'email' => [self::RL_REQUIRED],
+            'email' => [self::RL_REQUIRED, self::RL_EMAIL],
             'address' => [self::RL_REQUIRED],
         ];
     }
